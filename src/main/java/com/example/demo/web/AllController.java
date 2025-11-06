@@ -101,6 +101,13 @@ public class AllController {
 	@Autowired
 	DeckBuilderRepository deckBuilderRepository;
 	
+	@GetMapping("/hello")
+	public ResponseEntity<Map<String, String>> helloMethod() {
+	  Map<String, String> response = new HashMap<>();
+	  response.put("message", "Hello from MTG Spring backend on Render!");
+	  return ResponseEntity.ok(response);
+	  }
+	
 	
 	@PostMapping("sendEmail")
 	public void sendEmail( @RequestBody String email) {
