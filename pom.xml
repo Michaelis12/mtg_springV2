@@ -52,7 +52,14 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
+		
+		<!-- postgre Database en prod -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		
         <!-- Hibernate 6.x compatible with Jakarta -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>

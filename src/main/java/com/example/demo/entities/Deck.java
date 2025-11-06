@@ -55,7 +55,7 @@ public class Deck {
 	private LocalDate dateCreation;
 	
 	
-	@Column( columnDefinition = "LONGTEXT")
+	@Column(name = "image", length = 2000)
 	private String image;
 	
 	@Enumerated(EnumType.STRING)

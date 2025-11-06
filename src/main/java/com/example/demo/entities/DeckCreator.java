@@ -61,7 +61,7 @@ public class DeckCreator implements UserDetails {
 	@Temporal(TemporalType.DATE)
 	private LocalDate dateSign;
 	
-	@Column(name ="avatar", columnDefinition = "LONGTEXT" )
+	@Column(name ="avatar", length = 2000 )
 	private String avatar;
 	
 	@Column(name ="bio", length = 500 )

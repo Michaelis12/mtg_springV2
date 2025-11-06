@@ -37,7 +37,7 @@ public class Card {
     @Column(name = "name", nullable = false)
     private String name;
     
-    @Column( columnDefinition = "LONGTEXT")
+    @Column(name ="text", length = 2000)
 	private String text;
     
     @Column(name = "image", length = 2000)
