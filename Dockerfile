@@ -14,4 +14,4 @@ RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Lancer le jar
-CMD ["java", "-jar", "target/Spring_jar_MTG-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/Spring_jar_MTG_local-0.0.1-SNAPSHOT.jar"]
