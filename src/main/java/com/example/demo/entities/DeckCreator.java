@@ -15,7 +15,9 @@ import com.example.demo.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -70,11 +72,12 @@ public class DeckCreator implements UserDetails {
 	@Column(name = "activity", nullable = true)
 	@Enumerated(EnumType.STRING)
 	private UserActivity activity;
+
 	
-	@Lob
-	@Column(name = "role", nullable = false)
-	@Enumerated(EnumType.STRING)
-    private List<UserRole> roles = new ArrayList<>();
+	@ElementCollection
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+	private List<UserRole> roles = new ArrayList<>();
 	
 	
 	
