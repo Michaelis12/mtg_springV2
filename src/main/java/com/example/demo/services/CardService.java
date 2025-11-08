@@ -63,7 +63,7 @@ public class CardService implements ICardService {
 			List<GetCard> topGetCards = new ArrayList<>();
 			
 			topCards.removeIf(card -> card.getDecksNumber() == null);
-						
+			topCards.removeIf(card -> card.getTypes().contains("Basic"));						
 			topCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
 			
 			for (Card card : topCards) {
@@ -146,6 +146,7 @@ public class CardService implements ICardService {
 		    	        .filter(card -> card.getDecksNumber() != null)
 		    	        .collect(Collectors.toList());
 		    	allCards = deckCards;
+		    	allCards.removeIf(card -> card.getTypes().contains("Basic"));
 		    	allCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
 			    }
 		   
