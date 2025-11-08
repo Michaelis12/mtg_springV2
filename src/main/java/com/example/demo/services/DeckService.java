@@ -151,13 +151,6 @@ public class DeckService implements IDeckService {
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	// Méthodes sans authentification
 	
 	// homePage
@@ -760,7 +753,10 @@ public class DeckService implements IDeckService {
 	@Override
 	public Page<GetDeck> getDecksLikedPaged (DeckCreator user, int page, int size) {
 		
-		List<Deck> decks = user.getDecksLiked();
+		
+		List<Deck> decks = user.getDecksLiked().stream()
+		    .filter(Deck::getIsPublic) 
+		    .collect(Collectors.toList());
 		
 		// Appliquer manuellement la pagination
 	    int start = page * size;
