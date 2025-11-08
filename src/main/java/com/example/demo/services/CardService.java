@@ -198,6 +198,7 @@ public class CardService implements ICardService {
 		    	List<Card> deckCards = allFilteredCards.stream()
 		    	        .filter(card -> card.getDecksNumber() != null)
 		    	        .collect(Collectors.toList());
+		    	deckCards.removeIf(card -> card.getTypes().contains("Basic"));
 		    	allFilteredCards = deckCards;
 		    	allFilteredCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
 			    }
