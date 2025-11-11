@@ -133,7 +133,7 @@ public class CardService implements ICardService {
 		    if(order.equals("cedh")) {
 			    // Trier par nb d'utilsiation cedh
 		    	List<Card> cedhCards = allCards.stream()
-		    	        .filter(card -> card.getCedhNumber() != null)
+		    	        .filter(card -> card.getCedhNumber() != null && card.getCedhNumber() > 0)
 		    	        .collect(Collectors.toList());
 		    	allCards = cedhCards;
 		    	allCards.sort(Comparator.comparingLong(Card::getCedhNumber) .thenComparingLong(Card::getId).reversed());
@@ -143,7 +143,7 @@ public class CardService implements ICardService {
 		    if(order.equals("deck")) {
 			    // Trier par nb d'utilisation en deck
 		    	List<Card> deckCards = allCards.stream()
-		    	        .filter(card -> card.getDecksNumber() != null)
+		    	        .filter(card -> card.getDecksNumber() != null  && card.getDecksNumber() > 0)
 		    	        .collect(Collectors.toList());
 		    	allCards = deckCards;
 		    	allCards.removeIf(card -> card.getTypes().contains("Basic"));
@@ -186,7 +186,7 @@ public class CardService implements ICardService {
 		    if(order.equals("cedh")) {
 			    // Trier par nb d'utilsiation cedh
 		    	List<Card> cedhCards = allFilteredCards.stream()
-		    	        .filter(card -> card.getCedhNumber() != null)
+		    	        .filter(card -> card.getCedhNumber() != null  && card.getCedhNumber() > 0)
 		    	        .collect(Collectors.toList());
 		    	allFilteredCards = cedhCards;
 		    	allFilteredCards.sort(Comparator.comparingLong(Card::getCedhNumber).thenComparingLong(Card::getId).reversed());
@@ -196,7 +196,7 @@ public class CardService implements ICardService {
 		    if(order.equals("deck")) {
 			    // Trier par nb d'utilisation en deck
 		    	List<Card> deckCards = allFilteredCards.stream()
-		    	        .filter(card -> card.getDecksNumber() != null)
+		    	        .filter(card -> card.getDecksNumber() != null  && card.getDecksNumber() > 0)
 		    	        .collect(Collectors.toList());
 		    	deckCards.removeIf(card -> card.getTypes().contains("Basic"));
 		    	allFilteredCards = deckCards;
