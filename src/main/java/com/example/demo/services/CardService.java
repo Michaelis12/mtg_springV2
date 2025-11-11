@@ -136,7 +136,7 @@ public class CardService implements ICardService {
 		    	        .filter(card -> card.getCedhNumber() != null)
 		    	        .collect(Collectors.toList());
 		    	allCards = cedhCards;
-		    	allCards.sort(Comparator.comparingLong(Card::getCedhNumber).reversed());
+		    	allCards.sort(Comparator.comparingLong(Card::getCedhNumber) .thenComparingLong(Card::getId).reversed());
 		    	
 			    }
 		    
@@ -147,7 +147,7 @@ public class CardService implements ICardService {
 		    	        .collect(Collectors.toList());
 		    	allCards = deckCards;
 		    	allCards.removeIf(card -> card.getTypes().contains("Basic"));
-		    	allCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
+		    	allCards.sort(Comparator.comparingLong(Card::getDecksNumber) .thenComparingLong(Card::getId).reversed());
 			    }
 		   
 
@@ -189,7 +189,7 @@ public class CardService implements ICardService {
 		    	        .filter(card -> card.getCedhNumber() != null)
 		    	        .collect(Collectors.toList());
 		    	allFilteredCards = cedhCards;
-		    	allFilteredCards.sort(Comparator.comparingLong(Card::getCedhNumber).reversed());
+		    	allFilteredCards.sort(Comparator.comparingLong(Card::getCedhNumber).thenComparingLong(Card::getId).reversed());
 		    	
 			    }
 		    
@@ -200,7 +200,7 @@ public class CardService implements ICardService {
 		    	        .collect(Collectors.toList());
 		    	deckCards.removeIf(card -> card.getTypes().contains("Basic"));
 		    	allFilteredCards = deckCards;
-		    	allFilteredCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
+		    	allFilteredCards.sort(Comparator.comparingLong(Card::getDecksNumber).thenComparingLong(Card::getId).reversed());
 			    }
 
 		    // Pagination manuelle
