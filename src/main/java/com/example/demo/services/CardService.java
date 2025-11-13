@@ -64,7 +64,7 @@ public class CardService implements ICardService {
 			
 			topCards.removeIf(card -> card.getDecksNumber() == null);
 			topCards.removeIf(card -> card.getTypes().contains("Basic"));						
-			topCards.sort(Comparator.comparingLong(Card::getDecksNumber).reversed());
+			topCards.sort(Comparator.comparingLong(Card::getDecksNumber).thenComparingLong(Card::getId).reversed());
 			
 			for (Card card : topCards) {
 				
@@ -97,7 +97,7 @@ public class CardService implements ICardService {
 						
 			topCards.removeIf(card -> card.getCedhNumber() == null);
 						
-			topCards.sort(Comparator.comparingLong(Card::getCedhNumber).reversed());
+			topCards.sort(Comparator.comparingLong(Card::getCedhNumber).thenComparingLong(Card::getId).reversed());
 			
 			for (Card card : topCards) {
 				
@@ -136,7 +136,7 @@ public class CardService implements ICardService {
 		    	        .filter(card -> card.getCedhNumber() != null && card.getCedhNumber() > 0)
 		    	        .collect(Collectors.toList());
 		    	allCards = cedhCards;
-		    	allCards.sort(Comparator.comparingLong(Card::getCedhNumber) .thenComparingLong(Card::getId).reversed());
+		    	allCards.sort(Comparator.comparingLong(Card::getCedhNumber).thenComparingLong(Card::getId).reversed());
 		    	
 			    }
 		    
