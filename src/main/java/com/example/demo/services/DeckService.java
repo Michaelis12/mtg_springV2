@@ -168,7 +168,7 @@ public class DeckService implements IDeckService {
 				
 			}
 			
-			topDecks.sort(Comparator.comparingLong(Deck::getLikeNumber).reversed());
+			topDecks.sort(Comparator.comparingLong(Deck::getLikeNumber).thenComparingLong(Deck::getId).reversed());
 			List<GetDeck> topGetDecks = new ArrayList<>();
 			
 			for (Deck deck : topDecks) {
@@ -207,12 +207,12 @@ public class DeckService implements IDeckService {
 		    
 		    if(order.equals("date")) {
 		    // Trier par datePublication (croissant)
-		    	allFilteredDecks.sort(Comparator.comparing(Deck::getDatePublication).reversed());
+		    	allFilteredDecks.sort(Comparator.comparing(Deck::getDatePublication).thenComparingLong(Deck::getId).reversed());
 		    }
 		    
 		    if(order.equals("like")) {
 			    // Trier par nb de likes
-			    	allFilteredDecks.sort(Comparator.comparingLong(Deck::getLikeNumber).reversed());
+			    	allFilteredDecks.sort(Comparator.comparingLong(Deck::getLikeNumber).thenComparingLong(Deck::getId).reversed());
 			    }
 
 		    // Appliquer manuellement la pagination
